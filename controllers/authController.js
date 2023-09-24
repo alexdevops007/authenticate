@@ -13,7 +13,7 @@ const register = async (req, res) => {
     res.status(201).json({ message: 'Utilisateur enregistré avec succès.' });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Erreur lors de l'enregistrement de l'utilisateur.' });
+    res.status(500).json({ error: "Erreur lors de l'enregistrement de l'utilisateur." });
   }
 };
 

@@ -6,9 +6,9 @@ const { generateAccessToken, generateRefreshToken } = require('../utils/authUtil
 
 const register = async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { username, password, role } = req.body;
     const hashedPassword = await argon2.hash(password);
-    const user = new User({ username, password: hashedPassword });
+    const user = new User({ username, password: hashedPassword, role });
     await user.save();
     res.status(201).json({ message: 'Utilisateur enregistré avec succès.' });
   } catch (error) {

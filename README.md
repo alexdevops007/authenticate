@@ -13,8 +13,8 @@ Avant de commencer, assurez-vous d'avoir installé les logiciels suivants sur vo
 
 1. Clonez ce dépôt sur votre machine :
 
-git clone https://github.com/votre-utilisateur/authentification-nodejs-express-mongodb.git
-cd authentification-nodejs-express-mongodb
+git clone https://github.com/alexdevops007/authenticate.git
+cd authenticate
 
 
 2. Installez les dépendances du projet avec npm :

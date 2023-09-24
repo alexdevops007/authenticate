@@ -51,7 +51,7 @@ Vous pouvez personnaliser ce système d'authentification en fonction de vos beso
 
 ## Contributeurs
 
-- [Votre Nom](https://github.com/alexdevops007)
+- [Alex Simisi Nta](https://github.com/alexdevops007)
 
 ## Licence
 

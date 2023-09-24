@@ -2,6 +2,7 @@ const User = require('../models/User');
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
 const config = require('../config/config');
+const { generateAccessToken, generateRefreshToken } = require('../utils/authUtils');
 
 const register = async (req, res) => {
   try {
@@ -22,22 +23,17 @@ const login = async (req, res) => {
     const user = await User.findOne({ username });
 
     if (!user) {
-      return res.status(401).json({ error: 'Nom d'utilisateur ou mot de passe incorrect.' });
+      return res.status(401).json({ error: 'Nom d\'utilisateur ou mot de passe incorrect.' });
     }
 
     const validPassword = await argon2.verify(user.password, password);
 
     if (!validPassword) {
-      return res.status(401).json({ error: 'Nom d'utilisateur ou mot de passe incorrect.' });
+      return res.status(401).json({ error: 'Nom d\'utilisateur ou mot de passe incorrect.' });
     }
 
-    const accessToken = jwt.sign({ userId: user._id }, config.accessTokenSecret, {
-      expiresIn: '15m',
-    });
-
-    const refreshToken = jwt.sign({ userId: user._id }, config.refreshTokenSecret, {
-      expiresIn: '7d',
-    });
+    const accessToken = generateAccessToken(user._id);
+    const refreshToken = generateRefreshToken(user._id);
 
     res.json({ accessToken, refreshToken });
   } catch (error) {
